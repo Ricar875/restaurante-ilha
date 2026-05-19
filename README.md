@@ -23,7 +23,7 @@
   .pad{padding:14px 16px}
   .lbl{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:#999;margin:14px 0 8px}
   .lbl:first-child{margin-top:0}
- 
+
   /* Cardápio */
   .dia-row{display:flex;align-items:center;gap:8px;margin-bottom:12px}
   .dia-pill{background:#E1F5EE;color:#085041;font-size:12px;font-weight:600;padding:3px 13px;border-radius:20px}
@@ -34,7 +34,7 @@
   .pd{font-size:11px;color:#888;margin-top:2px}
   .pp{font-size:14px;font-weight:600;color:#1D9E75;white-space:nowrap;margin-left:10px}
   .pc.dest .pp{color:#993C1D}
- 
+
   /* Mesa */
   .mesa-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px}
   .mb{border:1px solid #e0e8e4;border-radius:10px;padding:13px 6px;text-align:center;cursor:pointer;background:#fff;transition:all .15s}
@@ -50,7 +50,7 @@
   .ab:last-child{margin-bottom:0}
   .ab:hover{background:#E1F5EE}
   .ab i{color:#0F6E56;font-size:17px}
- 
+
   /* WhatsApp */
   .wpp-hero{background:#E1F5EE;border-radius:12px;padding:14px;margin-bottom:12px;display:flex;align-items:center;gap:12px}
   .wpp-av{width:46px;height:46px;background:#0F6E56;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
@@ -64,7 +64,7 @@
   .wi-l{font-size:13px;font-weight:600;color:#1a1a1a}
   .wi-s{font-size:11px;color:#888;margin-top:2px}
   .wi i{font-size:15px;color:#aaa}
- 
+
   /* Fidelidade */
   .cartao{background:#0F6E56;border-radius:14px;padding:16px 18px;margin-bottom:14px;color:white}
   .ctop{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px}
@@ -101,19 +101,19 @@
   .hd{font-size:12px;font-weight:600;color:#1a1a1a}
   .hda{font-size:10px;color:#999;margin-top:1px}
   .hpt{font-size:13px;font-weight:600}.hpt.pos{color:#0F6E56}.hpt.neg{color:#993C1D}
- 
+
   .toast-bar{background:#0F6E56;color:white;padding:8px 16px;border-radius:20px;font-size:12px;text-align:center;margin-bottom:10px;display:none}
   .toast-bar.on{display:block}
   .rodape{padding:10px 16px;text-align:center;font-size:11px;color:#aaa;border-top:1px solid #f0f0f0}
- 
+
   /* toast global flutuante */
   #gtoast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#0F6E56;color:white;padding:9px 20px;border-radius:20px;font-size:13px;white-space:nowrap;display:none;z-index:999;box-shadow:0 4px 16px rgba(0,0,0,.2)}
 </style>
 </head>
 <body>
- 
+
 <div id="gtoast"></div>
- 
+
 <div class="app">
   <div class="hdr">
     <div class="hdr-top">
@@ -122,14 +122,14 @@
     </div>
     <div class="hdr-data" id="hdr-data"></div>
   </div>
- 
+
   <nav class="nav">
     <button class="nb on" onclick="aba('cardapio',this)"><i class="ti ti-clipboard-list"></i>Cardápio</button>
     <button class="nb" onclick="aba('mesa',this)"><i class="ti ti-armchair"></i>Mesa</button>
     <button class="nb" onclick="aba('wpp',this)"><i class="ti ti-brand-whatsapp"></i>WhatsApp</button>
     <button class="nb" onclick="aba('fid',this)"><i class="ti ti-gift"></i>Fidelidade</button>
   </nav>
- 
+
   <!-- CARDÁPIO -->
   <div id="cardapio" class="sec on">
     <div class="pad">
@@ -159,7 +159,7 @@
       </div>
     </div>
   </div>
- 
+
   <!-- MESA -->
   <div id="mesa" class="sec">
     <div class="pad">
@@ -180,7 +180,7 @@
       </div>
     </div>
   </div>
- 
+
   <!-- WHATSAPP -->
   <div id="wpp" class="sec">
     <div class="pad">
@@ -210,7 +210,7 @@
       </a>
     </div>
   </div>
- 
+
   <!-- FIDELIDADE -->
   <div id="fid" class="sec">
     <div class="pad">
@@ -239,10 +239,10 @@
       <div id="hist"></div>
     </div>
   </div>
- 
+
   <div class="rodape">Restaurante da Ilha · Paulo Afonso, BA</div>
 </div>
- 
+
 <script>
 const DIAS=['Domingo','Segunda-feira','Terça-feira','Quarta-feira','Quinta-feira','Sexta-feira','Sábado'];
 const MESES=['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'];
@@ -251,14 +251,14 @@ const hoje=new Date();
 document.getElementById('hdr-data').textContent=hoje.getDate()+' de '+MESES[hoje.getMonth()]+' de '+hoje.getFullYear();
 document.getElementById('dia-pill').textContent=DIAS[hoje.getDay()];
 document.getElementById('prato-dia').textContent=PRATOS[hoje.getDay()];
- 
+
 function aba(id,btn){
   document.querySelectorAll('.sec').forEach(s=>s.classList.remove('on'));
   document.querySelectorAll('.nb').forEach(b=>b.classList.remove('on'));
   document.getElementById(id).classList.add('on');
   btn.classList.add('on');
 }
- 
+
 let mesaSel=null;
 function selMesa(el,n){
   if(el.classList.contains('ocup')){toast2('Mesa '+n+' está ocupada');return;}
@@ -266,14 +266,14 @@ function selMesa(el,n){
   el.classList.add('sel');mesaSel=n;
   toast2('Mesa '+n+' selecionada ✓');
 }
- 
+
 let _gt;
 function toast2(msg){
   const t=document.getElementById('gtoast');
   t.textContent=msg;t.style.display='block';
   clearTimeout(_gt);_gt=setTimeout(()=>t.style.display='none',2600);
 }
- 
+
 const META=10;
 let vis=7,total=7;
 const historico=[
@@ -283,9 +283,9 @@ const historico=[
   {t:'g',d:'Visita registrada',dt:'08 mai 2026',p:'+1'},
   {t:'g',d:'Visita registrada',dt:'05 mai 2026',p:'+1'},
 ];
- 
+
 function nivel(v){return v>=50?'Ouro':v>=20?'Prata':'Bronze';}
- 
+
 function renderFid(){
   const pct=Math.round((vis/META)*100);
   document.getElementById('f-pts').textContent=vis;
@@ -318,7 +318,7 @@ function renderFid(){
     hl.innerHTML+=`<div class="hist-item"><div style="display:flex;align-items:center;gap:8px"><div class="hav ${h.t}"><i class="ti ${h.t==='g'?'ti-check':'ti-gift'}"></i></div><div><div class="hd">${h.d}</div><div class="hda">${h.dt}</div></div></div><div class="hpt ${h.p.startsWith('+')?'pos':'neg'}">${h.p}</div></div>`;
   });
 }
- 
+
 function carimbar(){
   if(vis>=META){toast2('Resgate sua recompensa antes!');return;}
   vis++;total++;
@@ -333,9 +333,8 @@ function resgatar(){
   renderFid();
   toast2('Recompensa resgatada! Bom apetite!');
 }
- 
+
 renderFid();
 </script>
 </body>
 </html>
- 
